@@ -7,12 +7,20 @@ const apiUrl = process.env.URL;
 class CharactersController {
     async create(req, res) {
         const getAllCharacters = await axios.get(apiUrl);
+       
+        getAllCharacters.data.forEach(async (character) => {
+            if(!character.bounty) {
+                return
+            }
 
-        console.log(getAllCharacters[0].id);
-      
+            await knex('characters').insert({
+                name: character.name,
+                bounty: character.bounty
+            });
 
+        });
 
-
+        res.status(201).send({message: 'Criado com sucesso'});
     }
 
 
