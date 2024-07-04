@@ -27,7 +27,7 @@ class UsersController {
             password: hashedPassword 
         });   
 
-        res.json(201, {'message': 'User created successfully'})
+        res.status(200).send({'message': 'User created successfully'});
     }
 
 

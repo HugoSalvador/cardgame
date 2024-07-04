@@ -3,12 +3,15 @@ require('dotenv').config();
 const AppError = require('./utils/AppError');
 
 const express = require('express');
+const cron = require("node-cron");
 
 const routes = require('./routes');
 
 const app = express();
-app.use(express.json());
 
+
+app.use(express.json());
+cron.schedule("* * * * *", () => console.log("Executando a tarefa a cada 1 minuto"));
 
 app.use(routes);
 

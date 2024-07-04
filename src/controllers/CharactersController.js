@@ -20,7 +20,7 @@ class CharactersController {
 
         });
 
-        res.status(201).send({message: 'Criado com sucesso'});
+        res.status(201).send({message: 'Characters created has succesfully'});
     }
 
 
